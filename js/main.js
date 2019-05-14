@@ -91,6 +91,8 @@
       canvas.addEventListener('mouseup', stopPlayer);   
       canvas.addEventListener('touchstart', movePlayer);
       canvas.addEventListener('touchend', stopPlayer);   
+      // canvas.addEventListener('keydown', movePlayer);
+      // canvas.addEventListener('keyup', stopPlayer);
 
       var load = function() {
         sprites.player = new Image();
