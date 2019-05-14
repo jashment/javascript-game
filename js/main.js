@@ -3,6 +3,8 @@
       //constants
       var GAME_WIDTH = 640;
       var GAME_HEIGHT = 360;
+      
+      var level = 1;
 
       //keep the game going
       var gameLive = true;
@@ -110,17 +112,31 @@
 
       //update the logic
       var update = function() {
+        
+        //if you've reached the goal, start over harder
+        if(checkCollision(player, goal)) {
+
+          level++;
+          
+          player.x = 10;
+          player.y = 160;
+          
+          enemies.forEach(function(element, index){
+            element.speedY += element.speedY/Math.abs(element.speedY);
+          });
+            
+        }
 
         //check if you've won the game
-        if(checkCollision(player, goal)) {
-          //stop the game
-            gameLive = false;
+        // if(checkCollision(player, goal)) {
+        //   //stop the game
+        //     gameLive = false;
 
-            alert('You\'ve won!');
+        //     alert('You\'ve won!');
 
-            //reload page
-            window.location = "";
-        }
+        //     //reload page
+        //     window.location = "";
+        // }
 
         //update player
         if(player.isMoving) {
